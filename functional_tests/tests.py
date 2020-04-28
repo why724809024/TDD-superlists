@@ -1,10 +1,11 @@
+from django.test import LiveServerTestCase
 from selenium import webdriver
 import unittest
 from selenium.webdriver.common.keys import Keys
 import time
 
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Firefox()
 
@@ -18,7 +19,7 @@ class NewVisitorTest(unittest.TestCase):
 
     def test_can_start_a_list_and_retrieve_it_later(self):
         # 伊迪丝听说了一个很酷的新的看板系统。她去看它的主页。
-        self.browser.get('http://localhost:8000')  # 打开django项目页面
+        self.browser.get(self.live_server_url)  # 打开django项目页面
 
         # 注意到标题显示待办事项列表，她立即进入待办事项
         self.assertIn('To-Do', self.browser.title)  # 断言title为‘To-Do’,并输出title
@@ -59,6 +60,3 @@ class NewVisitorTest(unittest.TestCase):
         self.fail('Finish the test!')  # 测试结束~
         # 很满意，她去睡觉了。
 
-
-if __name__ == '__main__':
-    unittest.main(warnings='ignore')
