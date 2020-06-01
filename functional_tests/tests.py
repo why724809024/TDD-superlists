@@ -113,6 +113,6 @@ class NewVisitorTest(LiveServerTestCase):
         # 仍然，没有看到Edith的列表
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
-        self.assertNotIn('Buy milk', page_text)
+        self.assertIn('Buy milk', page_text)
 
         # 很满意，他也去睡觉了
