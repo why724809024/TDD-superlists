@@ -1,5 +1,4 @@
 db.sqlite3
 geckodriver.log
 __pycache__
-*.pycdb.sqlite3 
-lists/
+*.pycdb.sqlite3
