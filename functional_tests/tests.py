@@ -2,12 +2,14 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
+import os
 from selenium.common.exceptions import WebDriverException
 
 MAX_WAIT = 10
 
 
 class NewVisitorTest(StaticLiveServerTestCase):
+
     def wait_for_row_in_list_table(self, row_text):
         start_time = time.time()
         while True:
@@ -23,6 +25,9 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
+        staging_server = os.environ.get('STAGING_SERVER')
+        if staging_server:
+            self.live_server_url = 'http://' + staging_server
 
     def tearDown(self):
         self.browser.quit()
