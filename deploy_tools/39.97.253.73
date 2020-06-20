@@ -1,0 +1,13 @@
+server {
+    listen 80;
+    server_name 39.97.253.73;
+
+	location /static {
+	        alias /home/web/site/static;
+	}
+
+    location / {
+        proxy_set_header Host $host;
+        proxy_pass http://unix:/tmp/39.97.253.73.socket;
+    }
+}

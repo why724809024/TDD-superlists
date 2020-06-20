@@ -1,0 +1,11 @@
+[Unit] 
+Description=Gunicorn server for superlists
+
+[Service]
+Restart=on-failure  
+User=web  
+WorkingDirectory=/home/web/site/TDD-superlists
+ExecStart=/home/web/site/virtualenv/bin/gunicorn --bind unix:/tmp/39.97.253.73.socket superlists.wsgi:application  
+
+[Install]
+WantedBy=multi-user.target
