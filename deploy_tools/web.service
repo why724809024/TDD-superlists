@@ -5,7 +5,7 @@ Description=Gunicorn server for superlists
 Restart=on-failure  
 User=web  
 WorkingDirectory=/home/web/site/source
-ExecStart=/home/web/site/virtualenv/bin/gunicorn --bind unix:/tmp/39.97.253.73.socket superlists.wsgi:application  
+ExecStart=/home/web/site/virtualenv/bin/gunicorn --bind unix:/tmp/120.24.40.111.socket superlists.wsgi:application  
 
 [Install]
 WantedBy=multi-user.target
